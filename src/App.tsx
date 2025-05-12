@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import "./App.css";
+import { QuestionScreen } from "./screens/QuestionScreen";
 import { WelcomeScreen } from "./screens/WelcomeScreen";
 import { RootState } from "./store";
 
@@ -14,7 +15,7 @@ function App() {
     return <WelcomeScreen />;
   }
 
-  return <></>;
+  return <QuestionScreen />;
 }
 
 export default App;

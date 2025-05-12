@@ -1,25 +1,15 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import patsilvarteLogoWide from "../assets/Patsilvarte_logo_horizontal.svg";
-import { RootState } from "../store";
+import { Q1, Q2, Q3 } from "../data/quiz";
 import { setQuestions } from "../store/quizSlice";
 
-const initialQuestion1to5: Q1to5 = {
-  format: "1to5",
-  options: [
-    { imageUrl: "https://via.placeholder.com/150" },
-    { imageUrl: "https://via.placeholder.com/150" },
-    { imageUrl: "https://via.placeholder.com/150" },
-  ],
-};
+const initialQuiz = [Q1, Q2, Q3];
 
 export const WelcomeScreen = () => {
   const dispatch = useDispatch();
-  const questions = useSelector((state: RootState) => state.quiz.questions);
-  const index = useSelector((state: RootState) => state.quiz.currentIndex);
-  const currentQuestion = questions[index];
 
   const setQuestionSet = () => {
-    dispatch(setQuestions([initialQuestion1to5]));
+    dispatch(setQuestions(initialQuiz));
   };
 
   return (
@@ -37,7 +27,9 @@ export const WelcomeScreen = () => {
           style={{ width: "60vw" }}
         />
       </div>
-      <button onClick={setQuestionSet}>Convites de casamento</button>
+      <div style={{ marginLeft: "auto", marginRight: "auto" }}>
+        <button onClick={setQuestionSet}>Convites de casamento</button>
+      </div>
     </>
   );
 };
