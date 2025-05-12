@@ -28,14 +28,12 @@
   background-color: #b5bf84;
   display: flex;
   justify-content: space-between;
-  padding: 10px 40px;
+  padding: 20px 30px 20px;
+  flex-direction: row-reverse;
 }
 .footer button {
   border: none;
   padding: 0;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
 }
 .footer button:hover {
   border: none;
@@ -44,4 +42,13 @@
 .question-box {
   flex: 1;
   max-width: 1280px;
+  margin: 40px;
+}
+.option-image {
+  border-radius: 2px;
+  transform: scale(1);
+  border-width: 5px;
+  border: solid;
+  border-color: transparent;
+  transition: all 0.3s ease-in !important;
 }
