@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./styles.css";
 
 export interface LabelItem {
@@ -15,6 +15,7 @@ export interface Labels {
 interface Props {
   onChange: (key: number, value: boolean | undefined) => void;
   keyInfo: number;
+  value: boolean | undefined;
 }
 
 const labels: Labels = {
@@ -32,14 +33,31 @@ const labels: Labels = {
   },
 };
 
-export const TripleToggleSwitch: React.FC<Props> = ({ onChange, keyInfo }) => {
+export const TripleToggleSwitch: React.FC<Props> = ({
+  onChange,
+  keyInfo,
+  value,
+}) => {
+  const translateValueToPosition = (val: boolean | undefined) => {
+    switch (val) {
+      case false:
+        return "left";
+      case true:
+        return "right";
+      case undefined:
+      default:
+        return "center";
+    }
+  };
+
   const [switchPosition, setSwitchPosition] = useState<
     "left" | "center" | "right"
-  >("left");
+  >(translateValueToPosition(value));
   const [animation, setAnimation] = useState<string | null>(null);
 
   const getSwitchAnimation = (value: "left" | "center" | "right") => {
     let anim: string | null = null;
+    console.log("click");
 
     if (value === "center" && switchPosition === "left")
       anim = "left-to-center";
@@ -59,6 +77,11 @@ export const TripleToggleSwitch: React.FC<Props> = ({ onChange, keyInfo }) => {
     onChange(keyInfo, labels[value].value);
   };
 
+  useEffect(() => {
+    const position = translateValueToPosition(value);
+    setSwitchPosition(position);
+  }, [value]);
+
   return (
     <div className="main-container">
       <div className={`switch ${animation ?? ""} ${switchPosition}-position`} />
@@ -66,7 +89,7 @@ export const TripleToggleSwitch: React.FC<Props> = ({ onChange, keyInfo }) => {
       {(["left", "center", "right"] as const).map((pos) => (
         <React.Fragment key={`${keyInfo}-${pos}`}>
           <input
-            defaultChecked={pos === "left"}
+            defaultChecked={pos === "center"}
             onChange={(e) => getSwitchAnimation(pos)}
             name="map-switch"
             id={`${keyInfo}-${pos}`}

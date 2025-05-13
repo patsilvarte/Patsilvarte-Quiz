@@ -1,4 +1,5 @@
 import { Card, CardMedia, Grid, Typography } from "@mui/material";
+import React from "react";
 import { useDispatch } from "react-redux";
 import { TripleToggleSwitch } from "../reusable/TripleToogleSwitch";
 import { answerQuestion } from "../store/quizSlice";
@@ -13,7 +14,8 @@ export const QuestionGNNG: React.FC<QuestionCardProps> = ({ question }) => {
 
   const onChange = (index: number, value: boolean | undefined) => {
     const fields = [...field];
-    fields[index].pick = value;
+    const updatedField = { ...fields[index], pick: value };
+    fields[index] = updatedField;
     const updated: QGNNG = { ...question, field: fields };
 
     dispatch(answerQuestion({ updated }));
@@ -50,17 +52,21 @@ export const QuestionGNNG: React.FC<QuestionCardProps> = ({ question }) => {
           }}
         >
           {field.map((item, index) => (
-            <>
-              <Grid key={index}>
+            <React.Fragment key={index}>
+              <Grid>
                 <Typography variant="body1" gutterBottom>
                   {item.text}
                 </Typography>
               </Grid>
-              <Grid key={index} size={9}>
+              <Grid size={9}>
                 {/* switch has to be feed from pick value */}
-                <TripleToggleSwitch onChange={onChange} keyInfo={index} />
+                <TripleToggleSwitch
+                  onChange={onChange}
+                  keyInfo={index}
+                  value={item.pick}
+                />
               </Grid>
-            </>
+            </React.Fragment>
           ))}
         </Grid>
       </Grid>
