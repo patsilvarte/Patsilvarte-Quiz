@@ -1,5 +1,6 @@
-import { Card, CardMedia, Grid, Slider, Typography } from "@mui/material";
+import { Card, CardMedia, Grid, Typography } from "@mui/material";
 import { useDispatch } from "react-redux";
+import { TripleToggleSwitch } from "../reusable/TripleToogleSwitch";
 import { answerQuestion } from "../store/quizSlice";
 
 type QuestionCardProps = {
@@ -11,27 +12,11 @@ export const QuestionGNNG: React.FC<QuestionCardProps> = ({ question }) => {
   const { imageUrl, field } = question;
 
   const onChange = (index: number, value: boolean | undefined) => {
-    const updated: QGNNG = { ...question };
-    updated.field[index].pick = value;
-    dispatch(answerQuestion({ updated }));
-  };
+    const fields = [...field];
+    fields[index].pick = value;
+    const updated: QGNNG = { ...question, field: fields };
 
-  const marks = [
-    {
-      value: 0,
-      label: "Não Gosto",
-    },
-    {
-      value: 50,
-      label: "Neutro",
-    },
-    {
-      value: 100,
-      label: "Gosto",
-    },
-  ];
-  const valuetext = (value: number) => {
-    return marks.find((option) => option.value === value)?.label || "";
+    dispatch(answerQuestion({ updated }));
   };
 
   return (
@@ -55,19 +40,26 @@ export const QuestionGNNG: React.FC<QuestionCardProps> = ({ question }) => {
             <CardMedia component="img" height="300" image={imageUrl} />
           </Card>
         </Grid>
-        <Grid size={6}>
+        <Grid
+          container
+          size={6}
+          spacing={4}
+          sx={{
+            justifyContent: "end",
+            alignItems: "baseline",
+          }}
+        >
           {field.map((item, index) => (
-            <div key={index} style={{ marginBottom: 16 }}>
-              <Typography variant="body1" gutterBottom>
-                {item.text}
-              </Typography>
-              <Slider
-                defaultValue={50}
-                getAriaValueText={valuetext}
-                step={null}
-                marks={marks}
-              />
-            </div>
+            <>
+              <Grid key={index}>
+                <Typography variant="body1" gutterBottom>
+                  {item.text}
+                </Typography>
+              </Grid>
+              <Grid key={index} size={9}>
+                <TripleToggleSwitch onChange={onChange} keyInfo={index} />
+              </Grid>
+            </>
           ))}
         </Grid>
       </Grid>
