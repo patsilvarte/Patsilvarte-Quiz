@@ -21,7 +21,7 @@ export const QuestionGNNG: React.FC<QuestionCardProps> = ({ question }) => {
 
   return (
     <>
-      <Typography variant="h6" gutterBottom>
+      <Typography variant="h5" gutterBottom>
         O que acham de cada elemento?
       </Typography>
       <Grid
@@ -57,6 +57,7 @@ export const QuestionGNNG: React.FC<QuestionCardProps> = ({ question }) => {
                 </Typography>
               </Grid>
               <Grid key={index} size={9}>
+                {/* switch has to be feed from pick value */}
                 <TripleToggleSwitch onChange={onChange} keyInfo={index} />
               </Grid>
             </>
