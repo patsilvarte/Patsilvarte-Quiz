@@ -46,6 +46,9 @@ button {
   color: white;
   cursor: pointer;
   transition: all 0.5s ease;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 button:hover {
   border-color: #535931;
