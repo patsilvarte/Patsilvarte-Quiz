@@ -9,7 +9,6 @@ type QuestionCardProps = {
 
 export const QuestionAvsB: React.FC<QuestionCardProps> = ({ question }) => {
   const dispatch = useDispatch();
-
   const { image1, image2, pick } = question;
 
   const onChange = (value: string) => {
