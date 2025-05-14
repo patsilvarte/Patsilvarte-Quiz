@@ -1,6 +1,7 @@
 import { Card, CardMedia, Grid, Rating, Typography } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { answerQuestion } from "../store/quizSlice";
+import { Q1to5 } from "../types";
 
 type QuestionCardProps = {
   question: Q1to5;

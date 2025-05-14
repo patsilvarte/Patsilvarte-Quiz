@@ -2,6 +2,7 @@ import { Card, CardMedia, Grid, Typography } from "@mui/material";
 import { CSSProperties } from "react";
 import { useDispatch } from "react-redux";
 import { answerQuestion } from "../store/quizSlice";
+import { QAvsB } from "../types";
 
 type QuestionCardProps = {
   question: QAvsB;
