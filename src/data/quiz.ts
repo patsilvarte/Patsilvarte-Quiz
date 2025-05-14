@@ -1,3 +1,5 @@
+import { Q1to5, QAvsB, QGNNG } from "../types";
+
 export const Q1: QAvsB = {
   format: "AvsB",
   image1: { url: "https://via.placeholder.com/150", value: "Option A" },

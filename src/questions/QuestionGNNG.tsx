@@ -3,6 +3,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { TripleToggleSwitch } from "../reusable/TripleToogleSwitch";
 import { answerQuestion } from "../store/quizSlice";
+import { QGNNG } from "../types";
 
 type QuestionCardProps = {
   question: QGNNG;

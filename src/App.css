@@ -26,24 +26,43 @@
 
 .footer {
   background-color: #b5bf84;
-  display: flex;
-  justify-content: space-between;
   padding: 20px 30px 20px;
-  flex-direction: row-reverse;
 }
-.footer button {
+.footer-element-right {
+  justify-content: end;
+  display: flex;
+}
+.footer-element-center {
+  justify-content: center;
+  display: flex;
+}
+
+button.link {
   border: none;
   padding: 0;
+  background-color: transparent;
 }
-.footer button:hover {
+button.link:hover {
   border: none;
+}
+button.link:focus {
+  border: none;
+  outline: none;
 }
 
 .question-box {
-  flex: 1;
   max-width: 1280px;
+  width: 100%;
   margin: 40px;
 }
+
+.question {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
 .option-image {
   border-radius: 2px;
   transform: scale(1);
@@ -51,4 +70,23 @@
   border: solid;
   border-color: transparent;
   transition: all 0.3s ease-in !important;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #b5bf84;
+  padding: 40px 50px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 45%;
+}
+
+.modal .modal-actions {
+  display: flex;
+  margin-top: 40px;
+  justify-content: space-evenly;
 }
