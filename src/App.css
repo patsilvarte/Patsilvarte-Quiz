@@ -26,17 +26,28 @@
 
 .footer {
   background-color: #b5bf84;
-  display: flex;
-  justify-content: space-between;
   padding: 20px 30px 20px;
-  flex-direction: row-reverse;
 }
-.footer button {
+.footer-element-right {
+  justify-content: end;
+  display: flex;
+}
+.footer-element-center {
+  justify-content: center;
+  display: flex;
+}
+
+button.link {
   border: none;
   padding: 0;
+  background-color: transparent;
 }
-.footer button:hover {
+button.link:hover {
   border: none;
+}
+button.link:focus {
+  border: none;
+  outline: none;
 }
 
 .question-box {
