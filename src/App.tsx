@@ -1,21 +1,25 @@
 import { useSelector } from "react-redux";
 import "./App.css";
+import { CompleteScreen } from "./screens/CompleteScreen";
 import { QuestionScreen } from "./screens/QuestionScreen";
 import { WelcomeScreen } from "./screens/WelcomeScreen";
 import { RootState } from "./store";
+import { ProgressState } from "./types";
 
 function App() {
-  const questions = useSelector((state: RootState) => state.quiz.questions);
-  const index = useSelector((state: RootState) => state.quiz.currentIndex);
-  const currentQuestion = questions[index];
+  const progress = useSelector((state: RootState) => state.quiz.progress);
 
-  console.log(index);
-  console.log(questions.length);
-  if (index === 0 && questions.length === 0) {
+  if (progress === ProgressState.NotStarted) {
     return <WelcomeScreen />;
   }
+  if (progress === ProgressState.OnGoing) {
+    return <QuestionScreen />;
+  }
+  if (progress === ProgressState.Completed) {
+    return <CompleteScreen />;
+  }
 
-  return <QuestionScreen />;
+  return <></>;
 }
 
 export default App;
