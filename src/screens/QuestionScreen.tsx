@@ -5,9 +5,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { Question1to5 } from "../questions/Question1to5";
 import { QuestionAvsB } from "../questions/QuestionAvsB";
 import { QuestionGNNG } from "../questions/QuestionGNNG";
+import { CleanButton } from "../reusable/CleanButton";
 import { Header } from "../reusable/Header";
 import { RootState } from "../store";
-import { clearQuestions, nextQuestion, prevQuestion } from "../store/quizSlice";
+import { nextQuestion, prevQuestion } from "../store/quizSlice";
 
 export const QuestionScreen = () => {
   const dispatch = useDispatch();
@@ -24,23 +25,22 @@ export const QuestionScreen = () => {
   const previous = () => {
     dispatch(prevQuestion());
   };
-  const clear = () => {
-    dispatch(clearQuestions());
-  };
 
   return (
     <>
       <Header />
-      <div className="question-box">
-        {currentQuestion.format === "AvsB" && (
-          <QuestionAvsB question={currentQuestion} />
-        )}
-        {currentQuestion.format === "GNNG" && (
-          <QuestionGNNG question={currentQuestion} />
-        )}
-        {currentQuestion.format === "1to5" && (
-          <Question1to5 question={currentQuestion} />
-        )}
+      <div className="question">
+        <div className="question-box">
+          {currentQuestion.format === "AvsB" && (
+            <QuestionAvsB question={currentQuestion} />
+          )}
+          {currentQuestion.format === "GNNG" && (
+            <QuestionGNNG question={currentQuestion} />
+          )}
+          {currentQuestion.format === "1to5" && (
+            <Question1to5 question={currentQuestion} />
+          )}
+        </div>
       </div>
       <Grid container className="footer">
         <Grid size={4}>
@@ -51,9 +51,7 @@ export const QuestionScreen = () => {
           )}
         </Grid>
         <Grid size={4} className="footer-element-center">
-          <button onClick={clear} className="link" style={{ fontSize: "16px" }}>
-            Voltar ao início
-          </button>
+          <CleanButton style={{ fontSize: "16px" }} />
         </Grid>
         <Grid size={4} className="footer-element-right">
           <button onClick={next} className="link">
