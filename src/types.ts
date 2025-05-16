@@ -7,10 +7,15 @@ export type QAvsB = {
   pick?: string; // value from one of the above options
 };
 
+export type QGNNGOption = {
+  text: string;
+  pick?: boolean;
+};
+
 export type QGNNG = {
   format: "GNNG";
   imageUrl: string;
-  field: { text: string; pick?: boolean }[]; // true for Good, undefined for Neutral, false for Not Good
+  field: QGNNGOption[]; // true for Good, undefined for Neutral, false for Not Good
 };
 
 export type Q1to5 = {
