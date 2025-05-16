@@ -1,25 +1,19 @@
-import { useSelector } from "react-redux";
+// src/App.tsx
+import React from "react";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import "./App.css";
-import { CompleteScreen } from "./screens/CompleteScreen";
-import { QuestionScreen } from "./screens/QuestionScreen";
-import { WelcomeScreen } from "./screens/WelcomeScreen";
-import { RootState } from "./store";
-import { ProgressState } from "./types";
+import { Quiz } from "./pages/Quiz";
+import { Results } from "./pages/Results";
 
-function App() {
-  const progress = useSelector((state: RootState) => state.quiz.progress);
-
-  if (progress === ProgressState.NotStarted) {
-    return <WelcomeScreen />;
-  }
-  if (progress === ProgressState.OnGoing) {
-    return <QuestionScreen />;
-  }
-  if (progress === ProgressState.Completed) {
-    return <CompleteScreen />;
-  }
-
-  return <></>;
-}
+export const App: React.FC = () => {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Quiz />} />
+        <Route path="/results" element={<Results />} />
+      </Routes>
+    </Router>
+  );
+};
 
 export default App;
