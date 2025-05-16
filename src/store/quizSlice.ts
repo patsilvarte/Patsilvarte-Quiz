@@ -17,7 +17,7 @@ export const quizSlice = createSlice({
   name: "quiz",
   initialState,
   reducers: {
-    setQuestions: (state, action: PayloadAction<Question[]>) => {
+    startQuiz: (state, action: PayloadAction<Question[]>) => {
       state.questions = action.payload;
       state.currentIndex = 0;
       state.progress = ProgressState.OnGoing;
@@ -37,9 +37,6 @@ export const quizSlice = createSlice({
         state.currentIndex -= 1;
       }
     },
-    // finishQuestion: (state) => {
-    //   state.progress = ProgressState.Completed;
-    // },
     goBackQuestion: (state) => {
       state.progress = ProgressState.OnGoing;
     },
@@ -48,16 +45,28 @@ export const quizSlice = createSlice({
       state.currentIndex = 0;
       state.questions = [];
     },
+    // for sync between tabs - syncAcrossTabs.ts
+    setCurrentIndex: (state, action: PayloadAction<number>) => {
+      state.currentIndex = action.payload;
+    },
+    setProgress: (state, action: PayloadAction<ProgressState>) => {
+      state.progress = action.payload;
+    },
+    setQuestions: (state, action: PayloadAction<Question[]>) => {
+      state.questions = action.payload;
+    },
   },
 });
 
 export const {
-  setQuestions,
+  startQuiz,
   answerQuestion,
   nextQuestion,
   prevQuestion,
-  //finishQuestion,
   goBackQuestion,
   clearQuestions,
+  setCurrentIndex,
+  setProgress,
+  setQuestions,
 } = quizSlice.actions;
 export default quizSlice.reducer;
