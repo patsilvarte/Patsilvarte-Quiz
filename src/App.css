@@ -1,4 +1,4 @@
-#root {
+.root {
   /* max-width: 1280px; */
   text-align: center;
   display: flex;
@@ -91,6 +91,11 @@ button.link:focus {
   justify-content: space-evenly;
 }
 
+.results {
+  width: 100vw;
+  position: relative;
+}
+
 .results-box {
   background-color: white;
   flex: 1;
@@ -105,4 +110,11 @@ button.link:focus {
 
 .result-gnng-option-list {
   margin-bottom: 20px;
+}
+
+.fixed {
+  position: fixed;
+  top: 0;
+  width: calc(100% - 80px);
+  z-index: 9;
 }

@@ -12,7 +12,7 @@ export const CompleteScreen = () => {
   };
 
   return (
-    <>
+    <div className="root">
       <Header />
 
       <div
@@ -44,6 +44,6 @@ export const CompleteScreen = () => {
       <div style={{ display: "flex", justifyContent: "center", padding: 40 }}>
         <CleanButton />
       </div>
-    </>
+    </div>
   );
 };

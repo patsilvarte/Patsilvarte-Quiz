@@ -27,7 +27,7 @@ export const QuestionScreen = () => {
   };
 
   return (
-    <>
+    <div className="root">
       <Header />
       <div className="question">
         <div className="question-box">
@@ -59,6 +59,6 @@ export const QuestionScreen = () => {
           </button>
         </Grid>
       </Grid>
-    </>
+    </div>
   );
 };
