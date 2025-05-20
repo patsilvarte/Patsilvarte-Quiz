@@ -1,5 +1,5 @@
 import { Grid, Typography } from "@mui/material";
-import { useRef } from "react";
+import { useMemo, useRef } from "react";
 import { useSelector } from "react-redux";
 import generatePDF from "react-to-pdf";
 import patsilvarteLogoWideWhite from "../assets/Patsilvarte_logo_horizontal_white.svg";
@@ -19,6 +19,14 @@ export const ResultsScreen = () => {
     generatePDF(targetRef, { filename: `${namePart}-${userInfo.date}.pdf` });
   };
 
+  const currentDate = useMemo(() => {
+    const now = new Date();
+    const day = String(now.getDate());
+    const month = String(now.getMonth() + 1); // Months are 0-based
+    const year = now.getFullYear();
+    return `${day}-${month}-${year}`;
+  }, []);
+
   const listAvsB = questions.filter((q) => q.format === "AvsB");
   const listGNNG = questions.filter((q) => q.format === "GNNG");
   const list1to5 = questions.filter((q) => q.format === "1to5");
@@ -32,6 +40,7 @@ export const ResultsScreen = () => {
       <div ref={targetRef}>
         <div className="header">
           <img className="header-logo" src={patsilvarteLogoWideWhite} />
+          <div>{currentDate}</div>
         </div>
         <UserInfo />
         <div className="results-box">
