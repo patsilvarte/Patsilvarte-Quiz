@@ -5,9 +5,13 @@ const MAX_COLORS = 6;
 
 interface MultiColorPickerProps {
   allowEdit?: boolean;
+  saveColors?: (colors: string[]) => void;
 }
 
-const MultiColorPicker = ({ allowEdit = false }: MultiColorPickerProps) => {
+const MultiColorPicker = ({
+  allowEdit = false,
+  saveColors,
+}: MultiColorPickerProps) => {
   const [colors, setColors] = useState<string[]>([]);
   const [popupIndex, setPopupIndex] = useState<number | null>(null);
   const popupRef = useRef<HTMLDivElement | null>(null);
@@ -45,6 +49,10 @@ const MultiColorPicker = ({ allowEdit = false }: MultiColorPickerProps) => {
 
   const removeColor = (index: number) =>
     setColors(colors.filter((_, i) => i !== index));
+
+  useEffect(() => {
+    if (saveColors) saveColors(colors);
+  }, [colors]);
 
   return (
     <>
