@@ -1,6 +1,7 @@
 import { Grid, Typography } from "@mui/material";
+import { useRef } from "react";
 import { useSelector } from "react-redux";
-import { usePDF } from "react-to-pdf";
+import generatePDF from "react-to-pdf";
 import patsilvarteLogoWideWhite from "../assets/Patsilvarte_logo_horizontal_white.svg";
 import { Result1to5 } from "../questions/Result1to5";
 import { ResultAvsB } from "../questions/ResultAvsB";
@@ -10,7 +11,13 @@ import { RootState } from "../store";
 
 export const ResultsScreen = () => {
   const questions = useSelector((state: RootState) => state.quiz.questions);
-  const { toPDF, targetRef } = usePDF({ filename: "page.pdf" });
+  const userInfo = useSelector((state: RootState) => state.quiz.userInfo);
+  const targetRef = useRef(null);
+
+  const createPdf = () => {
+    const namePart = userInfo.names?.trim().replace(/\s+/g, "-");
+    generatePDF(targetRef, { filename: `${namePart}-${userInfo.date}.pdf` });
+  };
 
   const listAvsB = questions.filter((q) => q.format === "AvsB");
   const listGNNG = questions.filter((q) => q.format === "GNNG");
@@ -20,7 +27,7 @@ export const ResultsScreen = () => {
     <div className="results">
       <div className="header fixed">
         <img className="header-logo" src={patsilvarteLogoWideWhite} />
-        <button onClick={() => toPDF()}>Download PDF</button>
+        <button onClick={createPdf}>Download PDF</button>
       </div>
       <div ref={targetRef}>
         <div className="header">
