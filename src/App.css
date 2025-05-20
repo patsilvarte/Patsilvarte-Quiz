@@ -99,6 +99,8 @@ button.link:focus {
 .results {
   width: 100vw;
   position: relative;
+  min-height: 100vh;
+  background-color: white;
 }
 
 .user-info {
