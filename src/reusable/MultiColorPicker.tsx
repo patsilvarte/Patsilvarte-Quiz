@@ -18,6 +18,10 @@ const MultiColorPicker = ({
   const [popupIndex, setPopupIndex] = useState<number | null>(null);
   const popupRef = useRef<HTMLDivElement | null>(null);
 
+  useEffect(() => {
+    setColors(initialColors);
+  }, [initialColors]);
+
   // Close popup on click outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -38,6 +42,11 @@ const MultiColorPicker = ({
     };
   }, [popupIndex]);
 
+  const openColorPicker = (index: number) => {
+    if (!allowEdit) return;
+    setPopupIndex(popupIndex === index ? null : index);
+  };
+
   const handleColorChange = (index: number, color: { hex: string }) => {
     const updated = [...colors];
     updated[index] = color.hex;
@@ -57,12 +66,12 @@ const MultiColorPicker = ({
   }, [colors]);
 
   return (
-    <>
+    <div className="color-picker ">
       {colors.map((color, index) => (
         <div key={index} className="color-option">
           <div
-            className="color-circle"
-            onClick={() => setPopupIndex(popupIndex === index ? null : index)}
+            className={`color-circle ${allowEdit ? "" : "disabled"}`}
+            onClick={() => openColorPicker(index)}
             style={{ backgroundColor: color }}
           />
           {allowEdit && <button onClick={() => removeColor(index)}>x</button>}
@@ -85,7 +94,7 @@ const MultiColorPicker = ({
           +
         </button>
       )}
-    </>
+    </div>
   );
 };
 

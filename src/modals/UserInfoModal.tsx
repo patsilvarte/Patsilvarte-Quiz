@@ -35,8 +35,8 @@ export const UserInfoModal = ({ open, onClose }: UserInfoModalProps) => {
         <Typography variant="h4" style={{ fontWeight: 700 }} sx={{ mb: 1 }}>
           Dados dos Noivos
         </Typography>
-        <div className="user-info">
-          <div className="user-info-section">
+        <div className="user-info-modal">
+          <div className="input-section">
             <label htmlFor="nomes">Nomes: </label>
             <input
               aria-label="nomes"
@@ -45,7 +45,7 @@ export const UserInfoModal = ({ open, onClose }: UserInfoModalProps) => {
               onChange={(e) => setNames(e.target.value)}
             />
           </div>
-          <div className="user-info-section">
+          <div className="input-section">
             <label htmlFor="data">Data do casamento: </label>
             <input
               aria-label="data"
@@ -54,7 +54,7 @@ export const UserInfoModal = ({ open, onClose }: UserInfoModalProps) => {
               onChange={(e) => setDate(e.target.value)}
             />
           </div>
-          <div className="color-picker user-info-section">
+          <div className="input-section">
             <label>Cores: </label>
             <MultiColorPicker
               allowEdit

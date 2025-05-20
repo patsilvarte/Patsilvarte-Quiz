@@ -102,6 +102,17 @@ button.link:focus {
 }
 
 .user-info {
+  display: flex;
+  gap: 8px;
+  padding: 14px 40px;
+  align-items: center;
+  background-color: #d7dcbc;
+}
+.highlight {
+  font-weight: 700;
+}
+
+.user-info-modal {
   padding: 20px 40px;
   display: flex;
   flex-direction: column;
@@ -109,10 +120,10 @@ button.link:focus {
   color: #535931;
   gap: 20px;
 }
-.user-info-section {
+.input-section {
   display: flex;
 }
-.user-info-section input {
+.input-section input {
   background-color: transparent;
   border: none;
   border-bottom: 2px solid #535931;
@@ -120,7 +131,7 @@ button.link:focus {
   color: white;
   flex: 1;
 }
-.user-info-section label {
+.input-section label {
   color: white;
   color: #535931;
   font-size: 20px;
@@ -156,6 +167,9 @@ button.link:focus {
   width: 26px;
   border-radius: 50%;
   margin-right: 2px;
+}
+.color-picker .color-option .color-circle.disabled {
+  cursor: default;
 }
 .color-picker .add-color {
   padding: 0;
