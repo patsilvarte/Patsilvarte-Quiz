@@ -18,10 +18,15 @@
   justify-content: space-between;
   align-items: center;
 }
-
 .header-logo {
   width: 160px;
   margin-top: 10px;
+}
+.fixed {
+  position: fixed;
+  top: 0;
+  width: calc(100% - 80px);
+  z-index: 9;
 }
 
 .footer {
@@ -96,6 +101,70 @@ button.link:focus {
   position: relative;
 }
 
+.extra-info {
+  padding: 20px 40px;
+  display: flex;
+  background-color: #d7dcbc;
+  color: #535931;
+}
+.extra-info input {
+  background-color: transparent;
+  padding: 4px 14px;
+  border: none;
+  border: 2px solid #b5bf84;
+  align-items: center;
+  border-radius: 10px;
+  height: 16px;
+}
+.extra-info label {
+  color: #535931;
+  margin-right: 10px;
+}
+
+.color-picker {
+  display: flex;
+  align-items: center;
+}
+.color-picker button {
+  padding: 0;
+  background-color: transparent;
+  display: inline;
+}
+.color-picker .color-option {
+  position: relative;
+  margin-right: 12px;
+  align-items: center;
+  display: flex;
+}
+.color-picker .color-option button {
+  font-size: 18px;
+  font-weight: 400;
+  border: none;
+}
+.color-picker .color-option .color-circle {
+  display: inline-block;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  height: 26px;
+  width: 26px;
+  border-radius: 50%;
+  margin-right: 2px;
+}
+.color-picker .add-color {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  display: inline;
+  height: 26px;
+  width: 26px;
+}
+
+.picker-popup {
+  position: absolute;
+  z-index: 1000;
+  top: 40px;
+}
+
 .results-box {
   background-color: white;
   flex: 1;
@@ -110,11 +179,4 @@ button.link:focus {
 
 .result-gnng-option-list {
   margin-bottom: 20px;
-}
-
-.fixed {
-  position: fixed;
-  top: 0;
-  width: calc(100% - 80px);
-  z-index: 9;
 }

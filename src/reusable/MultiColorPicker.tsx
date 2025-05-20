@@ -1,0 +1,78 @@
+import { useEffect, useRef, useState } from "react";
+import Sketch from "react-color/lib/components/sketch/Sketch";
+
+const MAX_COLORS = 4;
+
+const MultiColorPicker = () => {
+  const [colors, setColors] = useState<string[]>([]);
+  const [popupIndex, setPopupIndex] = useState<number | null>(null);
+  const popupRef = useRef<HTMLDivElement | null>(null);
+
+  // Close popup on click outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        popupRef.current &&
+        !popupRef.current.contains(event.target as Node)
+      ) {
+        setPopupIndex(null);
+      }
+    };
+
+    if (popupIndex !== null) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [popupIndex]);
+
+  const handleColorChange = (index: number, color: { hex: string }) => {
+    const updated = [...colors];
+    updated[index] = color.hex;
+    setColors(updated);
+  };
+
+  const addColor = () => {
+    if (colors.length >= MAX_COLORS) return;
+    setColors([...colors, "#ffffff"]);
+  };
+
+  const removeColor = (index: number) =>
+    setColors(colors.filter((_, i) => i !== index));
+
+  return (
+    <>
+      {colors.map((color, index) => (
+        <div key={index} className="color-option">
+          <div
+            className="color-circle"
+            onClick={() => setPopupIndex(popupIndex === index ? null : index)}
+            style={{ backgroundColor: color }}
+          />
+          <button onClick={() => removeColor(index)}>x</button>
+
+          {popupIndex === index && (
+            <div ref={popupRef} className="picker-popup">
+              <Sketch
+                disableAlpha
+                presetColors={[]}
+                color={color}
+                onChangeComplete={(c) => handleColorChange(index, c)}
+              />
+            </div>
+          )}
+        </div>
+      ))}
+
+      {colors.length < MAX_COLORS && (
+        <button className="add-color" onClick={addColor}>
+          +
+        </button>
+      )}
+    </>
+  );
+};
+
+export default MultiColorPicker;
