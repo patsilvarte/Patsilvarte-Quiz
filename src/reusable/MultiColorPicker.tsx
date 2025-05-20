@@ -5,22 +5,17 @@ const MAX_COLORS = 6;
 
 interface MultiColorPickerProps {
   allowEdit?: boolean;
-  saveColors?: (colors: string[]) => void;
-  initialColors?: string[];
+  colors: string[];
+  setColors: (colors: string[]) => void;
 }
 
 const MultiColorPicker = ({
   allowEdit = false,
-  saveColors,
-  initialColors = [],
+  colors,
+  setColors,
 }: MultiColorPickerProps) => {
-  const [colors, setColors] = useState<string[]>(initialColors);
   const [popupIndex, setPopupIndex] = useState<number | null>(null);
   const popupRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    setColors(initialColors);
-  }, [initialColors]);
 
   // Close popup on click outside
   useEffect(() => {
@@ -61,12 +56,8 @@ const MultiColorPicker = ({
   const removeColor = (index: number) =>
     setColors(colors.filter((_, i) => i !== index));
 
-  useEffect(() => {
-    if (saveColors) saveColors(colors);
-  }, [colors]);
-
   return (
-    <div className="color-picker ">
+    <div className="color-picker">
       {colors.map((color, index) => (
         <div key={index} className="color-option">
           <div

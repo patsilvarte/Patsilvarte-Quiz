@@ -56,11 +56,7 @@ export const UserInfoModal = ({ open, onClose }: UserInfoModalProps) => {
           </div>
           <div className="input-section">
             <label>Cores: </label>
-            <MultiColorPicker
-              allowEdit
-              saveColors={setColors}
-              initialColors={userInfo.colors}
-            />
+            <MultiColorPicker allowEdit colors={colors} setColors={setColors} />
           </div>
         </div>
         <div className="modal-actions">

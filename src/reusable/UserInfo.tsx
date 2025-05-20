@@ -24,7 +24,7 @@ export const UserInfo = () => {
           Casamento de <span className="highlight">{userInfo.names}</span> no
           dia <span className="highlight">{userInfo.date}</span> com as cores
         </Typography>
-        <MultiColorPicker initialColors={userInfo.colors} />
+        <MultiColorPicker colors={userInfo.colors ?? []} setColors={() => {}} />
         <button
           onClick={handleOpen}
           className="link"
