@@ -1,6 +1,10 @@
 import { Box, Modal, Typography } from "@mui/material";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import MultiColorPicker from "../reusable/MultiColorPicker";
+import { RootState } from "../store";
+import { saveUserInfo } from "../store/quizSlice";
+import { UserInfo } from "../types";
 
 interface UserInfoModalProps {
   open: boolean;
@@ -8,11 +12,20 @@ interface UserInfoModalProps {
 }
 
 export const UserInfoModal = ({ open, onClose }: UserInfoModalProps) => {
-  const [names, setNames] = useState("");
-  const [date, setDate] = useState("");
-  const [colors, setColors] = useState<string[]>([]);
+  const userInfo = useSelector((state: RootState) => state.quiz.userInfo);
+
+  const [names, setNames] = useState(userInfo.names || "");
+  const [date, setDate] = useState(userInfo.date || "");
+  const [colors, setColors] = useState<string[]>(userInfo.colors || []);
+  const dispatch = useDispatch();
 
   const onContinue = () => {
+    const userInfo: UserInfo = {
+      names,
+      date,
+      colors,
+    };
+    dispatch(saveUserInfo(userInfo));
     onClose();
   };
 
@@ -28,6 +41,7 @@ export const UserInfoModal = ({ open, onClose }: UserInfoModalProps) => {
             <input
               aria-label="nomes"
               type="text"
+              value={names}
               onChange={(e) => setNames(e.target.value)}
             />
           </div>
@@ -36,12 +50,17 @@ export const UserInfoModal = ({ open, onClose }: UserInfoModalProps) => {
             <input
               aria-label="data"
               type="date"
+              value={date}
               onChange={(e) => setDate(e.target.value)}
             />
           </div>
           <div className="color-picker user-info-section">
             <label>Cores: </label>
-            <MultiColorPicker allowEdit saveColors={setColors} />
+            <MultiColorPicker
+              allowEdit
+              saveColors={setColors}
+              initialColors={userInfo.colors}
+            />
           </div>
         </div>
         <div className="modal-actions">

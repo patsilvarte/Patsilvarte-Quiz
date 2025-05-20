@@ -33,3 +33,9 @@ export enum ProgressState {
   OnGoing = "on_going",
   Completed = "completed",
 }
+
+export type UserInfo = {
+  names?: string;
+  date?: string;
+  colors?: string[];
+};
