@@ -1,9 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import Sketch from "react-color/lib/components/sketch/Sketch";
 
-const MAX_COLORS = 4;
+const MAX_COLORS = 6;
 
-const MultiColorPicker = () => {
+interface MultiColorPickerProps {
+  allowEdit?: boolean;
+}
+
+const MultiColorPicker = ({ allowEdit = false }: MultiColorPickerProps) => {
   const [colors, setColors] = useState<string[]>([]);
   const [popupIndex, setPopupIndex] = useState<number | null>(null);
   const popupRef = useRef<HTMLDivElement | null>(null);
@@ -51,7 +55,7 @@ const MultiColorPicker = () => {
             onClick={() => setPopupIndex(popupIndex === index ? null : index)}
             style={{ backgroundColor: color }}
           />
-          <button onClick={() => removeColor(index)}>x</button>
+          {allowEdit && <button onClick={() => removeColor(index)}>x</button>}
 
           {popupIndex === index && (
             <div ref={popupRef} className="picker-popup">
@@ -66,7 +70,7 @@ const MultiColorPicker = () => {
         </div>
       ))}
 
-      {colors.length < MAX_COLORS && (
+      {allowEdit && colors.length < MAX_COLORS && (
         <button className="add-color" onClick={addColor}>
           +
         </button>

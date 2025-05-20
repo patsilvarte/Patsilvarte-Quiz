@@ -5,7 +5,7 @@ import patsilvarteLogoWideWhite from "../assets/Patsilvarte_logo_horizontal_whit
 import { Result1to5 } from "../questions/Result1to5";
 import { ResultAvsB } from "../questions/ResultAvsB";
 import { ResultGNNG } from "../questions/ResultGNNG";
-import { UserInfoForm } from "../reusable/UserInfoForm";
+import { UserInfo } from "../reusable/UserInfo";
 import { RootState } from "../store";
 
 export const ResultsScreen = () => {
@@ -26,7 +26,7 @@ export const ResultsScreen = () => {
         <div className="header">
           <img className="header-logo" src={patsilvarteLogoWideWhite} />
         </div>
-        <UserInfoForm />
+        <UserInfo />
         <div className="results-box">
           {listAvsB.length !== 0 && (
             <div className="result-question">
