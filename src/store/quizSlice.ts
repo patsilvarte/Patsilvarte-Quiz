@@ -1,16 +1,18 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ProgressState, Question } from "../types";
+import { ProgressState, Question, UserInfo } from "../types";
 
 interface QuizState {
   questions: Question[];
   currentIndex: number;
   progress: ProgressState;
+  userInfo: UserInfo;
 }
 
 const initialState: QuizState = {
   questions: [],
   currentIndex: 0,
   progress: ProgressState.NotStarted,
+  userInfo: {},
 };
 
 export const quizSlice = createSlice({
@@ -44,6 +46,10 @@ export const quizSlice = createSlice({
       state.progress = ProgressState.NotStarted;
       state.currentIndex = 0;
       state.questions = [];
+      state.userInfo = {};
+    },
+    saveUserInfo: (state, action: PayloadAction<UserInfo>) => {
+      state.userInfo = action.payload;
     },
     // for sync between tabs - syncAcrossTabs.ts
     setCurrentIndex: (state, action: PayloadAction<number>) => {
@@ -65,6 +71,7 @@ export const {
   prevQuestion,
   goBackQuestion,
   clearQuestions,
+  saveUserInfo,
   setCurrentIndex,
   setProgress,
   setQuestions,

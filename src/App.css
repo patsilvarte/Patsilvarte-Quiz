@@ -1,4 +1,4 @@
-#root {
+.root {
   /* max-width: 1280px; */
   text-align: center;
   display: flex;
@@ -18,10 +18,15 @@
   justify-content: space-between;
   align-items: center;
 }
-
 .header-logo {
   width: 160px;
   margin-top: 10px;
+}
+.fixed {
+  position: fixed;
+  top: 0;
+  width: calc(100% - 80px);
+  z-index: 9;
 }
 
 .footer {
@@ -89,4 +94,112 @@ button.link:focus {
   display: flex;
   margin-top: 40px;
   justify-content: space-evenly;
+}
+
+.results {
+  width: 100vw;
+  position: relative;
+  min-height: 100vh;
+  background-color: white;
+}
+
+.user-info {
+  display: flex;
+  gap: 8px;
+  padding: 14px 40px;
+  align-items: center;
+  background-color: #d7dcbc;
+}
+.highlight {
+  font-weight: 700;
+}
+
+.user-info-modal {
+  padding: 20px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  color: #535931;
+  gap: 20px;
+}
+.input-section {
+  display: flex;
+}
+.input-section input {
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #535931;
+  align-items: center;
+  color: white;
+  flex: 1;
+}
+.input-section label {
+  color: white;
+  color: #535931;
+  font-size: 20px;
+  font-weight: 600;
+  margin-right: 10px;
+}
+
+.color-picker {
+  display: flex;
+  align-items: center;
+}
+.color-picker button {
+  padding: 0;
+  background-color: transparent;
+  display: inline;
+}
+.color-picker .color-option {
+  position: relative;
+  margin-right: 12px;
+  align-items: center;
+  display: flex;
+}
+.color-picker .color-option button {
+  font-size: 18px;
+  font-weight: 400;
+  border: none;
+}
+.color-picker .color-option .color-circle {
+  display: inline-block;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  height: 26px;
+  width: 26px;
+  border-radius: 50%;
+  margin-right: 2px;
+}
+.color-picker .color-option .color-circle.disabled {
+  cursor: default;
+}
+.color-picker .add-color {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  display: inline;
+  height: 26px;
+  width: 26px;
+}
+
+.picker-popup {
+  position: absolute;
+  z-index: 1000;
+  top: 40px;
+}
+
+.results-box {
+  background-color: white;
+  flex: 1;
+  text-align: left;
+  padding: 40px;
+  overflow: scroll;
+}
+
+.result-question {
+  margin-bottom: 50px;
+}
+
+.result-gnng-option-list {
+  margin-bottom: 20px;
 }

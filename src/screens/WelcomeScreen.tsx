@@ -13,7 +13,7 @@ export const WelcomeScreen = () => {
   };
 
   return (
-    <>
+    <div className="root">
       <div
         style={{
           display: "flex",
@@ -30,6 +30,6 @@ export const WelcomeScreen = () => {
       <div style={{ marginLeft: "auto", marginRight: "auto" }}>
         <button onClick={setQuestionSet}>Convites de casamento</button>
       </div>
-    </>
+    </div>
   );
 };
