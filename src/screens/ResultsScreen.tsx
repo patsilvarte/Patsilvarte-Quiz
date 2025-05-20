@@ -1,6 +1,7 @@
 import { Grid, Typography } from "@mui/material";
-import { useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import generatePDF from "react-to-pdf";
 import patsilvarteLogoWideWhite from "../assets/Patsilvarte_logo_horizontal_white.svg";
 import { Result1to5 } from "../questions/Result1to5";
@@ -8,11 +9,20 @@ import { ResultAvsB } from "../questions/ResultAvsB";
 import { ResultGNNG } from "../questions/ResultGNNG";
 import { UserInfo } from "../reusable/UserInfo";
 import { RootState } from "../store";
+import { ProgressState } from "../types";
 
 export const ResultsScreen = () => {
   const questions = useSelector((state: RootState) => state.quiz.questions);
   const userInfo = useSelector((state: RootState) => state.quiz.userInfo);
+  const progress = useSelector((state: RootState) => state.quiz.progress);
+  const navigate = useNavigate();
   const targetRef = useRef(null);
+
+  useEffect(() => {
+    if (progress === ProgressState.NotStarted) {
+      navigate("/");
+    }
+  }, [progress]);
 
   const createPdf = () => {
     const namePart = userInfo.names?.trim().replace(/\s+/g, "-");
