@@ -25,8 +25,12 @@ export const ResultsScreen = () => {
   }, [progress]);
 
   const createPdf = () => {
-    const namePart = userInfo.names?.trim().replace(/\s+/g, "-");
-    generatePDF(targetRef, { filename: `${namePart}-${userInfo.date}.pdf` });
+    let fileName = `resultados-${currentDate}`;
+    if (!!userInfo.names && !!userInfo.date) {
+      const namePart = userInfo.names?.trim().replace(/\s+/g, "-");
+      fileName = `${namePart}-${userInfo.date}.pdf`;
+    }
+    generatePDF(targetRef, { filename: fileName });
   };
 
   const currentDate = useMemo(() => {
