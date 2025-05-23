@@ -2,6 +2,7 @@ import { Card, CardMedia, Grid } from "@mui/material";
 import { QAvsB } from "../types";
 
 export const ResultAvsB = ({ question }: { question: QAvsB }) => {
+  if (!question.pick) return <></>;
   const selectedImage =
     question.image1.value === question.pick ? question.image1 : question.image2;
 

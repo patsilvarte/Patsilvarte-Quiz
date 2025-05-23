@@ -61,7 +61,7 @@ export const QuestionAvsB: React.FC<QuestionCardProps> = ({ question }) => {
               <Card sx={getStyle(img.value)} className="option-image">
                 <CardMedia
                   component="img"
-                  height="300"
+                  style={{ maxHeight: "60vh" }}
                   src={img.url}
                   alt={img.value}
                 />
