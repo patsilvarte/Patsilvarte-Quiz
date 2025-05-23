@@ -26,10 +26,10 @@ export const ResultGNNG = ({ question }: { question: QGNNG }) => {
   const optionsN = question.field.filter((op) => op.pick === undefined);
 
   return (
-    <Grid container spacing={4}>
+    <Grid container size={6} spacing={2}>
       <Grid size={4}>
         <Card className="option-image">
-          <CardMedia component="img" height="200" image={question.imageUrl} />
+          <CardMedia component="img" height="400" image={question.imageUrl} />
         </Card>
       </Grid>
       <Grid size={8}>

@@ -65,7 +65,7 @@ export const ResultsScreen = () => {
               <Typography variant="h5" style={{ marginBottom: 10 }}>
                 Opções selecionadas
               </Typography>
-              <Grid container>
+              <Grid container spacing={2}>
                 {listAvsB.map((question) => (
                   <ResultAvsB question={question} />
                 ))}
@@ -77,9 +77,11 @@ export const ResultsScreen = () => {
               <Typography variant="h5" style={{ marginBottom: 10 }}>
                 Preferências por exemplo
               </Typography>
-              {listGNNG.map((question) => (
-                <ResultGNNG question={question} />
-              ))}
+              <Grid container spacing={2}>
+                {listGNNG.map((question) => (
+                  <ResultGNNG question={question} />
+                ))}
+              </Grid>
             </div>
           )}
           {list1to5.length !== 0 && (
