@@ -27,7 +27,7 @@ export const Question1to5: React.FC<QuestionCardProps> = ({ question }) => {
       <Grid
         container
         spacing={8}
-        mt={2}
+        mt={1}
         p={4}
         sx={{
           justifyContent: "center",

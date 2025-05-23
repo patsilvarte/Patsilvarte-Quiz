@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux";
 import patsilvarteLogoWide from "../assets/Patsilvarte_logo_horizontal.svg";
+import { quizConvites } from "../data/invites_data";
 import { Q1, Q2, Q3 } from "../data/quiz";
 import { startQuiz } from "../store/quizSlice";
 
@@ -9,7 +10,7 @@ export const WelcomeScreen = () => {
   const dispatch = useDispatch();
 
   const setQuestionSet = () => {
-    dispatch(startQuiz(initialQuiz));
+    dispatch(startQuiz(quizConvites));
   };
 
   return (

@@ -24,13 +24,11 @@ export const QuestionGNNG: React.FC<QuestionCardProps> = ({ question }) => {
 
   return (
     <>
-      <Typography variant="h5" gutterBottom>
-        O que acham de cada elemento?
-      </Typography>
+      <Typography variant="h5">O que acham de cada elemento?</Typography>
       <Grid
         container
-        spacing={8}
-        mt={2}
+        spacing={4}
+        mt={1}
         p={4}
         sx={{
           justifyContent: "center",
@@ -40,13 +38,17 @@ export const QuestionGNNG: React.FC<QuestionCardProps> = ({ question }) => {
       >
         <Grid size={6}>
           <Card className="option-image">
-            <CardMedia component="img" height="300" image={imageUrl} />
+            <CardMedia
+              component="img"
+              image={imageUrl}
+              style={{ maxHeight: "60vh" }}
+            />
           </Card>
         </Grid>
         <Grid
           container
           size={6}
-          spacing={4}
+          spacing={2}
           sx={{
             justifyContent: "end",
             alignItems: "baseline",
@@ -54,12 +56,12 @@ export const QuestionGNNG: React.FC<QuestionCardProps> = ({ question }) => {
         >
           {field.map((item, index) => (
             <React.Fragment key={index}>
-              <Grid>
+              <Grid size={4}>
                 <Typography variant="body1" gutterBottom>
                   {item.text}
                 </Typography>
               </Grid>
-              <Grid size={9}>
+              <Grid size={8}>
                 {/* switch has to be feed from pick value */}
                 <TripleToggleSwitch
                   onChange={onChange}
