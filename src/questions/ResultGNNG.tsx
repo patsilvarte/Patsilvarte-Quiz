@@ -29,7 +29,7 @@ export const ResultGNNG = ({ question }: { question: QGNNG }) => {
     <Grid container size={6} spacing={2}>
       <Grid size={4}>
         <Card className="option-image">
-          <CardMedia component="img" height="400" image={question.imageUrl} />
+          <CardMedia component="img" height="300" image={question.imageUrl} />
         </Card>
       </Grid>
       <Grid size={8}>
