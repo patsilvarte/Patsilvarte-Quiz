@@ -28,7 +28,61 @@ import simples3 from "../assets/questions/simples3.jpg";
 //import simples4 from "../assets/questions/simples4.jpg";
 import simples5 from "../assets/questions/simples5.jpg";
 
-import { QAvsB, QGNNG } from "../types";
+import abrirJanela from "../assets/questions/material/abrir-janela.jpg";
+import arco from "../assets/questions/material/arco.jpg";
+import fioFlor from "../assets/questions/material/fio-flor.jpg";
+import fioLacreFlor from "../assets/questions/material/fio-lacre-flor.jpg";
+import lacre from "../assets/questions/material/lacre.jpg";
+import oval from "../assets/questions/material/oval.jpg";
+import papelRasgado from "../assets/questions/material/papel-rasgado.jpg";
+import papelTranslucido from "../assets/questions/material/papel-translucido.jpg";
+import passport from "../assets/questions/material/passport.jpg";
+import presoTopo from "../assets/questions/material/preso-topo.jpg";
+import puxarTopo from "../assets/questions/material/puxar-topo.jpg";
+import recorte from "../assets/questions/material/recorte.jpg";
+import relevo from "../assets/questions/material/relevo.jpg";
+import semiArco from "../assets/questions/material/semi-arco.jpg";
+import simples from "../assets/questions/material/simples.jpg";
+import tecidoFlor from "../assets/questions/material/tecido-flor.jpg";
+
+import { Q1to5, QAvsB, QGNNG } from "../types";
+
+const RQ1: Q1to5 = {
+  format: "1to5",
+  options: [
+    { imageUrl: tecidoFlor, text: "Faixa de tecido" },
+    { imageUrl: fioFlor, text: "Fio serapilheira" },
+    { imageUrl: fioLacreFlor, text: "Detalhe flor seca" },
+    { imageUrl: lacre, text: "Lacre de cêra" },
+  ],
+};
+const RQ2: Q1to5 = {
+  format: "1to5",
+  options: [
+    { imageUrl: oval, text: "Formato oval" },
+    { imageUrl: semiArco, text: "Corte semi Arco" },
+    { imageUrl: arco, text: "Formato arco" },
+    { imageUrl: simples, text: "Tradicional retangular" },
+  ],
+};
+const RQ3: Q1to5 = {
+  format: "1to5",
+  options: [
+    { imageUrl: recorte, text: "Recorte complexo" },
+    { imageUrl: relevo, text: "Detalhes em relevo" },
+    { imageUrl: papelTranslucido, text: "Papel translúcido" },
+    { imageUrl: papelRasgado, text: "Papel rasgado" },
+  ],
+};
+const RQ4: Q1to5 = {
+  format: "1to5",
+  options: [
+    { imageUrl: passport, text: "Estilo passaporte" },
+    { imageUrl: presoTopo, text: "Preso no topo com camadas" },
+    { imageUrl: puxarTopo, text: "Puxar do envelope" },
+    { imageUrl: abrirJanela, text: "Abrir como uma janela" },
+  ],
+};
 
 const ABQ1: QAvsB = {
   format: "AvsB",
@@ -311,4 +365,8 @@ export const quizConvites = [
   GNNGQ20,
   GNNGQ21,
   GNNGQ22,
+  RQ1,
+  RQ2,
+  RQ3,
+  RQ4,
 ];
