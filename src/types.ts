@@ -22,6 +22,7 @@ export type Q1to5 = {
   format: "1to5";
   options: {
     imageUrl: string;
+    text: string;
     pick?: number; // 1 to 5 values
   }[];
 };

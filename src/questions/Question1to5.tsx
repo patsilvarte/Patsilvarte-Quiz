@@ -40,6 +40,9 @@ export const Question1to5: React.FC<QuestionCardProps> = ({ question }) => {
             <Card className="option-image">
               <CardMedia component="img" height="100" image={opt.imageUrl} />
             </Card>
+            <Typography variant="body1" gutterBottom mt={1}>
+              {opt.text}
+            </Typography>
             <Rating
               value={opt.pick ?? null}
               onChange={(_, newVal) => handleRatingChange(index, newVal)}

@@ -15,8 +15,8 @@ export const Q2: QGNNG = {
 export const Q3: Q1to5 = {
   format: "1to5",
   options: [
-    { imageUrl: "https://via.placeholder.com/150" },
-    { imageUrl: "https://via.placeholder.com/150" },
-    { imageUrl: "https://via.placeholder.com/150" },
+    { imageUrl: "https://via.placeholder.com/150", text: "op1" },
+    { imageUrl: "https://via.placeholder.com/150", text: "op2" },
+    { imageUrl: "https://via.placeholder.com/150", text: "op3" },
   ],
 };
