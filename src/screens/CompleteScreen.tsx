@@ -11,6 +11,10 @@ export const CompleteScreen = () => {
     dispatch(goBackQuestion());
   };
 
+  const checkResults = () => {
+    window.open("/results", "_blank");
+  };
+
   return (
     <div className="root">
       <Header />
@@ -36,7 +40,7 @@ export const CompleteScreen = () => {
         <Typography variant="h6" style={{ marginBottom: "40px" }}>
           Exportem o resultado e enviem-nos o ficheiro.
         </Typography>
-        <button onClick={goback}>Exportar resultado</button>
+        <button onClick={checkResults}>Exportar resultado</button>
         <button onClick={goback} className="link" style={{ marginTop: "10px" }}>
           Rever questões
         </button>

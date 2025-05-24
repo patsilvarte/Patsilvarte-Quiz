@@ -7,6 +7,7 @@ import patsilvarteLogoWideWhite from "../assets/Patsilvarte_logo_horizontal_whit
 import { Result1to5 } from "../questions/Result1to5";
 import { ResultAvsB } from "../questions/ResultAvsB";
 import { ResultGNNG } from "../questions/ResultGNNG";
+import { CleanButton } from "../reusable/CleanButton";
 import { UserInfo } from "../reusable/UserInfo";
 import { RootState } from "../store";
 import { ProgressState } from "../types";
@@ -49,6 +50,7 @@ export const ResultsScreen = () => {
     <div className="results">
       <div className="header fixed">
         <img className="header-logo" src={patsilvarteLogoWideWhite} />
+        <CleanButton />
         <button onClick={createPdf}>Download PDF</button>
       </div>
       <div ref={targetRef}>
