@@ -52,7 +52,7 @@ export const UserInfo = () => {
         ) : (
           <>
             <Typography variant="h6">
-              Queremos saber mais sobre o vosso camsamento
+              Queremos saber mais sobre o vosso casamento
             </Typography>
             <button
               onClick={handleOpen}

@@ -47,7 +47,7 @@ export const QuestionAvsB: React.FC<QuestionCardProps> = ({ question }) => {
       <Grid
         container
         spacing={8}
-        mt={2}
+        mt={1}
         p={4}
         sx={{
           justifyContent: "center",
@@ -61,8 +61,8 @@ export const QuestionAvsB: React.FC<QuestionCardProps> = ({ question }) => {
               <Card sx={getStyle(img.value)} className="option-image">
                 <CardMedia
                   component="img"
-                  height="300"
-                  image={img.url}
+                  style={{ maxHeight: "60vh" }}
+                  src={img.url}
                   alt={img.value}
                 />
               </Card>

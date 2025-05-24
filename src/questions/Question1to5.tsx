@@ -27,7 +27,7 @@ export const Question1to5: React.FC<QuestionCardProps> = ({ question }) => {
       <Grid
         container
         spacing={8}
-        mt={2}
+        mt={1}
         p={4}
         sx={{
           justifyContent: "center",
@@ -36,9 +36,13 @@ export const Question1to5: React.FC<QuestionCardProps> = ({ question }) => {
         }}
       >
         {options.map((opt, index) => (
-          <Grid size={4} key={index}>
+          <Grid size={3} key={index}>
             <Card className="option-image">
-              <CardMedia component="img" height="100" image={opt.imageUrl} />
+              <CardMedia
+                component="img"
+                style={{ maxHeight: "30vh" }}
+                image={opt.imageUrl}
+              />
             </Card>
             <Typography variant="body1" gutterBottom mt={1}>
               {opt.text}
@@ -48,7 +52,6 @@ export const Question1to5: React.FC<QuestionCardProps> = ({ question }) => {
               onChange={(_, newVal) => handleRatingChange(index, newVal)}
               max={5}
               size="large"
-              style={{ marginTop: 10 }}
             />
           </Grid>
         ))}

@@ -1,26 +1,10 @@
-import { Card, CardMedia, Grid, Rating } from "@mui/material";
+import { Card, CardMedia, Grid, Rating, Typography } from "@mui/material";
 import { Q1to5 } from "../types";
 
-/* interface ListProps {
-  text: string;
-  list: QGNNGOption[];
-  style?: CSSProperties;
-}
-const List = ({ text, list, style }: ListProps) => {
-  if (list.length === 0) return;
-
-  return (
-    <div className="result-gnng-option-list" style={style}>
-      <Typography variant="h6">{text}</Typography>
-      {list.map((op) => (
-        <Typography variant="body1">{op.text}</Typography>
-      ))}
-    </div>
-  );
-}; */
-
 const groupOptionsByPick = (list: Q1to5[]) => {
-  const result: { [key: number]: { imageUrl: string; pick: number }[] } = {};
+  const result: {
+    [key: number]: { imageUrl: string; pick: number; text: string }[];
+  } = {};
 
   for (const question of list) {
     for (const option of question.options) {
@@ -31,6 +15,7 @@ const groupOptionsByPick = (list: Q1to5[]) => {
         result[option.pick].push({
           imageUrl: option.imageUrl,
           pick: option.pick,
+          text: option.text,
         });
       }
     }
@@ -41,7 +26,7 @@ const groupOptionsByPick = (list: Q1to5[]) => {
 
 interface ScoreOptionsProps {
   score: number;
-  list: { imageUrl: string }[];
+  list: { imageUrl: string; text: string }[];
 }
 export const ScoreOptions = ({ score, list }: ScoreOptionsProps) => {
   return (
@@ -49,10 +34,13 @@ export const ScoreOptions = ({ score, list }: ScoreOptionsProps) => {
       <Rating readOnly value={score} size="large" style={{ marginTop: 10 }} />
       <Grid container spacing={4}>
         {list.map((op, index) => (
-          <Grid size={3} key={index}>
+          <Grid size={2} key={index}>
             <Card className="option-image">
               <CardMedia component="img" height="200" image={op.imageUrl} />
             </Card>
+            <Typography variant="body1" gutterBottom mt={1}>
+              {op.text}
+            </Typography>
           </Grid>
         ))}
       </Grid>
