@@ -12,7 +12,8 @@ export const CompleteScreen = () => {
   };
 
   const checkResults = () => {
-    window.open("/results", "_blank");
+    const url = `${window.location.origin}${window.location.pathname}#/results`;
+    window.open(url, "_blank");
   };
 
   return (
