@@ -11,7 +11,7 @@ export const ResultAvsB = ({ question }: { question: QAvsB }) => {
       <Card className="option-image">
         <CardMedia
           component="img"
-          height="400"
+          height="300"
           image={selectedImage.url}
           alt={selectedImage.value}
         />
