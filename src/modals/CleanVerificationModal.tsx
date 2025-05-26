@@ -27,11 +27,11 @@ export const CleanVerificationModal = ({
           Todas as respostas serão apagadas.
         </Typography>
         <div className="modal-actions">
-          <button onClick={onClose} className="link">
-            Não
-          </button>
-          <button onClick={clear} className="link">
+          <button onClick={clear} className="no-highlight modal-button">
             Sim
+          </button>
+          <button onClick={onClose} className="modal-button">
+            Não
           </button>
         </div>
       </Box>

@@ -57,9 +57,7 @@ export const QuestionGNNG: React.FC<QuestionCardProps> = ({ question }) => {
           {field.map((item, index) => (
             <React.Fragment key={index}>
               <Grid size={4}>
-                <Typography variant="body1" gutterBottom>
-                  {item.text}
-                </Typography>
+                <Typography variant="body1">{item.text}</Typography>
               </Grid>
               <Grid size={8}>
                 {/* switch has to be feed from pick value */}

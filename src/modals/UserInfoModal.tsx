@@ -60,11 +60,11 @@ export const UserInfoModal = ({ open, onClose }: UserInfoModalProps) => {
           </div>
         </div>
         <div className="modal-actions">
-          <button onClick={onClose} className="link">
-            Cancel
+          <button onClick={onClose} className="no-highlight modal-button">
+            Cancelar
           </button>
-          <button onClick={onContinue} className="link">
-            Save
+          <button onClick={onContinue} className="modal-button">
+            Guardar
           </button>
         </div>
       </Box>
