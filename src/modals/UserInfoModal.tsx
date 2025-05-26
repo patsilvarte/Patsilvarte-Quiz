@@ -1,6 +1,6 @@
-import { Box, Modal, Typography } from "@mui/material";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { CutomModal } from "../reusable/CutomModal";
 import MultiColorPicker from "../reusable/MultiColorPicker";
 import { RootState } from "../store";
 import { saveUserInfo } from "../store/quizSlice";
@@ -30,44 +30,39 @@ export const UserInfoModal = ({ open, onClose }: UserInfoModalProps) => {
   };
 
   return (
-    <Modal open={open} onClose={onClose}>
-      <Box className="modal">
-        <Typography variant="h4" style={{ fontWeight: 700 }} sx={{ mb: 1 }}>
-          Dados dos Noivos
-        </Typography>
-        <div className="user-info-modal">
-          <div className="input-section">
-            <label htmlFor="nomes">Nomes: </label>
-            <input
-              aria-label="nomes"
-              type="text"
-              value={names}
-              onChange={(e) => setNames(e.target.value)}
-            />
-          </div>
-          <div className="input-section">
-            <label htmlFor="data">Data do casamento: </label>
-            <input
-              aria-label="data"
-              type="date"
-              value={date}
-              onChange={(e) => setDate(e.target.value)}
-            />
-          </div>
-          <div className="input-section">
-            <label>Cores: </label>
-            <MultiColorPicker allowEdit colors={colors} setColors={setColors} />
-          </div>
+    <CutomModal
+      title="Dados dos Noivos"
+      highlightText="Guardar"
+      onHighlightClick={onContinue}
+      nohighlightText="Cancelar"
+      onNoHighlightClick={onClose}
+      open={open}
+      onClose={onClose}
+    >
+      <div className="user-info-modal">
+        <div className="input-section">
+          <label htmlFor="nomes">Nomes: </label>
+          <input
+            aria-label="nomes"
+            type="text"
+            value={names}
+            onChange={(e) => setNames(e.target.value)}
+          />
         </div>
-        <div className="modal-actions">
-          <button onClick={onClose} className="no-highlight modal-button">
-            Cancelar
-          </button>
-          <button onClick={onContinue} className="modal-button">
-            Guardar
-          </button>
+        <div className="input-section">
+          <label htmlFor="data">Data do casamento: </label>
+          <input
+            aria-label="data"
+            type="date"
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
+          />
         </div>
-      </Box>
-    </Modal>
+        <div className="input-section">
+          <label>Cores: </label>
+          <MultiColorPicker allowEdit colors={colors} setColors={setColors} />
+        </div>
+      </div>
+    </CutomModal>
   );
 };
