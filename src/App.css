@@ -55,13 +55,21 @@ button.link:focus {
   border: none;
   outline: none;
 }
+button.link.light {
+  color: white;
+}
+button.link.light:hover {
+  color: #b5bf84;
+}
 
 button.modal-button {
   padding-left: 60px;
   padding-right: 60px;
   border-width: 1px;
-  background-color: #535931;
-  color: white;
+  background-color: transparent;
+  border-color: #535931;
+  color: #535931;
+  font-size: 18px;
 }
 button.modal-button:hover {
   background-color: #b5bf84;
@@ -73,11 +81,10 @@ button.modal-button:focus {
   border: none;
   outline: none;
 }
-button.no-highlight {
-  background-color: transparent;
-  border-color: #535931;
-  color: #535931;
-  border-width: 1px;
+
+button.highlight {
+  background-color: #535931;
+  color: white;
 }
 
 .question-box {
