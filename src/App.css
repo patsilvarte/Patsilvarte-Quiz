@@ -43,31 +43,32 @@
 }
 
 button.link {
-  border: none;
   padding: 0;
   background-color: transparent;
 }
 button.link:hover {
-  border: none;
   background-color: transparent;
 }
 button.link:focus {
-  border: none;
   outline: none;
 }
 button.link.light {
   color: white;
 }
 button.link.light:hover {
-  color: #b5bf84;
+  color: #d7dcbc;
+  background-color: transparent;
+}
+
+button.light:hover {
+  background-color: #d7dcbc;
 }
 
 button.modal-button {
   padding-left: 60px;
   padding-right: 60px;
-  border-width: 1px;
+  border: 1px solid #535931;
   background-color: transparent;
-  border-color: #535931;
   color: #535931;
   font-size: 18px;
 }

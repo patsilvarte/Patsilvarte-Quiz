@@ -20,7 +20,7 @@ export const CleanVerificationModal = ({
 
   return (
     <CutomModal
-      title="Dados dos Noivos"
+      title="De certeza que querem voltar ao início?"
       highlightText="Não"
       onHighlightClick={onClose}
       nohighlightText="Sim"

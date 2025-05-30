@@ -51,7 +51,9 @@ export const ResultsScreen = () => {
       <div className="header fixed">
         <img className="header-logo" src={patsilvarteLogoWideWhite} />
         <CleanButton light />
-        <button onClick={createPdf}>Download PDF</button>
+        <button onClick={createPdf} className="light">
+          Download PDF
+        </button>
       </div>
       <div ref={targetRef}>
         <div className="header">
