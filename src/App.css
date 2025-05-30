@@ -53,15 +53,21 @@ button.link:focus {
   outline: none;
 }
 button.link.light {
-  color: white;
-}
-button.link.light:hover {
   color: #d7dcbc;
   background-color: transparent;
 }
+button.link.light:hover {
+  color: white;
+  background-color: transparent;
+}
 
-button.light:hover {
+button.light {
   background-color: #d7dcbc;
+  color: #535931;
+}
+button.light:hover {
+  background-color: #b5bf84;
+  color: white;
 }
 
 button.modal-button {
