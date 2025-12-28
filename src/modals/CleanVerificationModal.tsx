@@ -1,5 +1,6 @@
-import { Box, Modal, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { useDispatch } from "react-redux";
+import { CutomModal } from "../reusable/CutomModal";
 import { clearQuestions } from "../store/quizSlice";
 
 interface CleanVerificationModalProps {
@@ -18,23 +19,18 @@ export const CleanVerificationModal = ({
   };
 
   return (
-    <Modal open={open} onClose={onClose}>
-      <Box className="modal">
-        <Typography variant="h5" style={{ fontWeight: 700 }}>
-          De certeza que querem voltar ao início?
-        </Typography>
-        <Typography variant="h6" sx={{ mt: 1 }}>
-          Todas as respostas serão apagadas.
-        </Typography>
-        <div className="modal-actions">
-          <button onClick={onClose} className="link">
-            Não
-          </button>
-          <button onClick={clear} className="link">
-            Sim
-          </button>
-        </div>
-      </Box>
-    </Modal>
+    <CutomModal
+      title="De certeza que querem voltar ao início?"
+      highlightText="Não"
+      onHighlightClick={onClose}
+      nohighlightText="Sim"
+      onNoHighlightClick={clear}
+      open={open}
+      onClose={onClose}
+    >
+      <Typography variant="h6" sx={{ mt: 1 }}>
+        Todas as respostas serão apagadas.
+      </Typography>
+    </CutomModal>
   );
 };

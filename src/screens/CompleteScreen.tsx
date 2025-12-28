@@ -38,10 +38,12 @@ export const CompleteScreen = () => {
         <Typography variant="h6">
           Mas vossas escolhas ainda não estão guardadas...
         </Typography>
-        <Typography variant="h6" style={{ marginBottom: "40px" }}>
+        <Typography variant="h6" style={{ marginBottom: "50px" }}>
           Exportem o resultado e enviem-nos o ficheiro.
         </Typography>
-        <button onClick={checkResults}>Exportar resultado</button>
+        <button style={{ marginBottom: "6px" }} onClick={checkResults}>
+          Exportar resultado
+        </button>
         <button onClick={goback} className="link" style={{ marginTop: "10px" }}>
           Rever questões
         </button>
